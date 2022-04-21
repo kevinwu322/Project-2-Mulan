@@ -1,9 +1,23 @@
+#include <Servo.h>
+
+//CONSTANTS
+const int swordSWITCHPIN = 2;
+const int swordSERVOPIN = 3;
+
+//VARIABLES
+int swordValue;
+Servo swordServo;
+
 void setup() {
-  // put your setup code here, to run once:
-  //hello
+  swordServo.attach(swordSERVOPIN);
+  swordServo.write(0);
+  pinMode(swordSWITCHPIN, INPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  swordValue = digitalRead(swordSWITCHPIN);
+  if(swordValue == LOW){
+    Serial.println("sword lifted");
+    swordServo.write(180);
+  }
 }
