@@ -19,5 +19,11 @@ void loop() {
   if(swordValue == LOW){
     Serial.println("sword lifted");
     swordServo.write(180);
+    delay(50);
+  }
+  else if(swordValue == HIGH){
+    Serial.println("sword lowered");
+    swordServo.write(0);
+    delay(50);
   }
 }
